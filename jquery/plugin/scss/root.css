@@ -1,0 +1,30 @@
+/* BG-Color define only in root */
+:root {
+  --bg-primary: #007bff;
+  --bg-secondary: #6c757d;
+  --bg-success: #28a745;
+  --bg-danger: #dc3545;
+  --bg-warning: #ffc107;
+  --bg-light: #f8f9fa;
+  --bg-dark: #343a40;
+  --bg-white: #fff;
+  --bg-transparent: transparent;
+}
+
+/* Text && Font color define only */
+:root {
+  ---text-primary: #007bff;
+  ---text-secondary: #6c757d;
+  ---text-success: #28a745;
+  ---text-danger: #dc3545;
+  ---text-warning: #ffc107;
+  ---text-info: #17a2b8;
+  ---text-light: #f8f9fa;
+  ---text-dark: #343a40;
+  ---text-body: #212529;
+  ---text-muted: #6c757d;
+  ---text-white: #fff;
+  ---text-black-50: rgba(0, 0, 0, 0.5);
+  ---text-white-50: rgba(255, 255, 255, 0.5);
+}
+/*# sourceMappingURL=root.css.map */

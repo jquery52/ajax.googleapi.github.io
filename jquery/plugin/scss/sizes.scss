@@ -1,0 +1,233 @@
+// plugins #=Sass Compiler make css plugins in scss
+$oprateSize: ((w-, width),
+    (h-, height),
+    (mw-, max-width),
+    (min-w-, min-width),
+    (mh-, max-height),
+    (min-h-, min-height),
+    (m-, margin),
+    (mr-, margin-right),
+    (ml-, margin-left),
+    (mt-, margin-top), 
+    (p-, padding),
+    (pl-, padding-left),
+    (pr-, padding-right),
+    (pt-, padding-top));
+
+$oprateList: ((justify, justify),
+    (text-center, center),
+    (text-left, left),
+    (text-right, right),
+    (text-center, center));
+
+@each $plugin,
+$value in $oprateList {
+    .#{$plugin} {
+        text-align: $value;
+    }
+}
+
+@each $plugin,
+$name in $oprateSize {
+    @for $counter from 1 through 1000 {
+        .#{$plugin}#{$counter} {
+            #{$name}: 0px + $counter;
+        }
+    }
+} 
+
+/* Margin &&& padding (mr ml mt mb) (pr pl pt pb)
+*/
+$autoSize: (max-auto: (margin-left: margin-right,
+    ),
+    mr-auto: margin-right,
+    ml-auto: margin-left,
+    mt-auto: margin-top,
+    mb-auto: margin-bottom,
+    pr-auto: padding-right,
+    pl-auto: padding-left,
+    pt-auto: padding-top,
+    pb-auto: padding-bottom,
+);
+
+@each $plugin,
+$name in $autoSize {
+    .#{$plugin} {
+
+        @each $key1,
+        $key2 in $name {
+            #{$key1}: auto;
+
+            @if $key2 {
+                #{$key2}: auto;
+            }
+        }
+    }
+}
+
+/* X && Y margin && padding set vertically && horizontally
+ * Here define two types style plugins my- || mx- && py- || px-
+*/
+$xyOptions: (my-: (margin-top: margin-bottom,
+    ),
+    mx-: (margin-left: margin-right,
+    ),
+    px-: (padding-left: padding-right,
+    ),
+    py-: (padding-top: padding-bottom,
+    ),
+);
+
+@each $plugin,
+$names in $xyOptions {
+    @for $counter from 1 through 1000 {
+        .#{$plugin}#{$counter} {
+
+            @each $property1,
+            $property2 in $names {
+                #{$property1}: 0px + $counter;
+                #{$property2}: 0px + $counter;
+            }
+        }
+    }
+}
+
+/* Vew port define className Selector
+ * short hand adjusting size in not 
+ * px ) format here only define size
+ * vw && vh ) formatting use oprater
+ * max-vw-100 && min-vh-100 suggest
+*/
+$viewportList: ((min-vw-, min-width),
+    (max-vw-, max-width),
+    (min-vh-, min-height),
+    (max-vh-, max-height));
+
+@each $plugins,
+$property in $viewportList {
+    @for $counter from 1 through 100 {
+        .#{$plugins}#{$counter} {
+            @if $plugins==max-vh- {
+                #{$property}: 0vh + $counter;
+            }
+
+            @if $plugins==min-vh- {
+                #{$property}: 0vh + $counter;
+            }
+
+            @if $plugins==max-vw- {
+                #{$property}: 0vw + $counter;
+            }
+
+            @if $plugins==min-vw- {
+                #{$property}: 0vw + $counter;
+            }
+        }
+    }
+}
+
+/* width && height define className in ( % ) fromatt
+ * 1 ) width && height define className in ( % )
+ * 2 ) margin && padding define className in ( % )
+*/
+
+$persentSize: ((w_, width),
+    (h_, height),
+    (mw_, max-width),
+    (min-w_, min-width),
+    (mh_, max-height),
+    (min-h_, min-height),
+    (m_, margin),
+    (mr_, margin-right),
+    (ml_, margin-left),
+    (mt_, margin-top),
+    (p_, padding),
+    (pl_, padding-left),
+    (pr_, padding-right),
+    (pt_, padding-top));
+
+@each $plugins,
+$property in $persentSize {
+    @for $counter from 1 through 100 {
+        .#{$plugins}#{$counter} {
+            #{$property}: 0% + $counter;
+        }
+    }
+}
+
+$vwOrvh: ((vw-, width), (vh-, height));
+
+@each $plugins,
+$property in $vwOrvh {
+    @for $counter from 1 through 100 {
+        .#{$plugins}#{$counter} {
+            @if $plugins==vw {
+                #{$property}: 0vw + $counter;
+            }
+
+            @if $plugins==vh {
+                #{$property}: 0vh + $counter;
+            }
+        }
+    }
+}
+
+@for $counter from 1 through 500 {
+    .f-s-#{$counter} {
+        font-size: 0px + $counter;
+    }
+}
+
+
+$auto: ((w-auto: width,
+        h-auto: height,
+        m-auto: margin,
+        p-auto: padding,
+    ));
+
+@each $plugins,
+$property in $auto {
+    .#{$plugins} {
+        #{$property}: auto;
+    }
+}
+
+
+$position: (t-: top,
+    l-: left,
+    b-: bottom,
+    r-: right,
+);
+
+@each $plugins,
+$property in $position {
+    @for $counter from 1 through 1000 {
+        .#{$plugins}#{$counter} {
+            #{$property}: 0px + $counter;
+        }
+
+        .#{$plugins}#{$counter}vw {
+            #{$property}: 0vw + $counter;
+        }
+    }
+}
+
+$xy: (x-: (left: right,
+    ),
+    y-: (top: bottom,
+    ),
+);
+
+@each $plugins,
+$values in $xy {
+    @for $counter from 1 through 1000 {
+        .#{$plugins}#{$counter} {
+
+            @each $property1,
+            $property2 in $values {
+                #{$property1}: 0px + $counter;
+                #{$property2}: 0px + $counter;
+            }
+        }
+    }
+}
